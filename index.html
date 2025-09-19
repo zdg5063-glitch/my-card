@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Boilerplate for polaris chip">
-  <base href="/">
+  <meta name="Description" content="Boilerplate for polaris chip" />
+  <base href="/" />
+
+  <title>polaris-chip / my-card</title>
 
   <style>
     :root,
@@ -16,27 +18,85 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
-    polaris-chip {
+
+    polaris-chip,
+    my-card {
       margin: 16px;
     }
+
+    .controls {
+      margin: 16px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid black;
+      background-color: #faf9f4;
+      padding: 8px 16px;
+      margin: 4px;
+      cursor: pointer;
+    }
+    
   </style>
-  <title>polaris-chip / my-card</title>
 </head>
 
 <body>
   <h1>polaris-chip</h1>
-  <!-- this is going to do whatever the tag's defaults are -->
+
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
   <polaris-chip title="Faculty and Staff"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
 
-  <h1>my-card</h1>
-  <my-card></my-card>
+  <h1 style="padding: 32px;">my cards....</h1>
 
-  <!-- this is what is bringing in the definition for this tag -->
+  <div id="cardlist" class="card-container">
+    <my-card
+      title="PENN STATE UNIVERSITY"
+      image="https://www.pennlive.com/resizer/v2/ZZ4EKXLGXJB25APZDKSJYTYK6Q.jpeg?auth=db4eeb0f6975c5e1364db30de414c1a0ea7f503dc643ef2351e2092b34b906c4&width=1280&quality=90" Alt="Old Main"
+      link="https://hax.psu.edu/"
+      description="The Pennsylvania State University is a public, land-grant research university with campuses and facilities throughout Pennsylvania.">
+    </my-card>
+  </div>
+    <my-card
+      title="PENN STATE HARRISBURG"
+      image="https://harrisburg.psu.edu/sites/harrisburg/files/styles/left_feature_area/public/visitus_planyourvisit_0.jpg?itok=BHRIpLDT" Alt="Penn State Harrisburg"
+      link="https://hax.psu.edu/"
+      description="The Pennsylvania State University is a public, land-grant research university with campuses and facilities throughout Pennsylvania.">
+    </my-card>
+      <my-card
+      title="PENN STATE ALTOONA"
+      image="https://altoona.psu.edu/sites/altoona/files/styles/left_feature_area/public/pennstate-ataglance_2.jpg?itok=lKRyP7ID" Alt="Penn State Altoona"
+      link="https://hax.psu.edu/"
+      description="The Pennsylvania State University is a public, land-grant research university with campuses and facilities throughout Pennsylvania.">
+    </my-card>
+      <my-card
+      title="PENN STATE ERIE"
+      image="https://behrend.psu.edu/sites/default/files/campus/150606A%2520117%2520smaller_6.jpg" Alt="Penn State Erie"
+      link="https://hax.psu.edu/"
+      description="The Pennsylvania State University is a public, land-grant research university with campuses and facilities throughout Pennsylvania.">
+    </my-card>
+      <my-card
+      title="PENN STATE BRANDYWINE"
+      image="https://images.ctfassets.net/ni9rh5nu0d99/ivxOUHQRz9LcNKRFZ2w5m/40c43534870bcbabe967c97e942bd43e/brandywine-housing.jpg?fm=webp&w=3840&q=75" Alt="Penn State Brandywine"
+      link="https://hax.psu.edu/"
+      description="The Pennsylvania State University is a public, land-grant research university with campuses and facilities throughout Pennsylvania.">
+    </my-card>
+  
+
+  <!-- Scripts -->
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
+  <script type="module" src="./script.js"></script>
+
+</script>
+
 </body>
 
 </html>
+
+
