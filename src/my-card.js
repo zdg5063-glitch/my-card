@@ -1,9 +1,3 @@
-/**
- * Now it's your turn. Here's what we need to try and do:
- * 1. Get you HTML from your card working in here 
- * 2. Get your CSS rescoped as needed to work here
- */
-
 import { LitElement, html, css } from 'lit';
 
 export class MyCard extends LitElement {
@@ -11,39 +5,46 @@ export class MyCard extends LitElement {
     return 'my-card';
   }
 
-  constructor() {
-    super();
-    this.title = "Default Title";
-    this.image = "";
-    this.link = "#";
-    this.description = "";
-  }
-
   static get properties() {
     return {
       title: { type: String },
       image: { type: String },
       link: { type: String },
-      description: { type: String }
+      description: { type: String },
+      fancy: { type: Boolean, reflect: true }
     };
+  }
+
+  constructor() {
+    super();
+    this.title = "Default Title";
+    this.image = "#";
+    this.link = "#";
+    this.description = "#";
+    this.fancy = "false";
   }
 
   static get styles() {
     return css`
       :host {
-        display: block;
+        display: inline-block;
         max-width: 400px;
         border: 2px solid black;
         background-color: white;
       }
 
+      :host([fancy]) {
+      background-color: var(--my-card-fancy-bg, #6aff00); 
+    }
+
       .card-image {
         width: 365px;
+        height: 250px;
         padding: 16px;
       }
 
       .card-title {
-        font-size: 32px;
+        font-size: 24px;
         margin: 16px;
         color: black;
       }
@@ -54,7 +55,7 @@ export class MyCard extends LitElement {
 
       .card-description {
         font-family: Georgia, serif;
-        font-size: 14px;
+        font-size: 12px;
         margin-bottom: 32px;
         font-weight: bold;
       }
@@ -67,10 +68,6 @@ export class MyCard extends LitElement {
         padding: 4px 32px;
         text-decoration: none;
       }
-
-      :host(.fancy) {
-        background-color: #8cff39;
-      }
     `;
   }
 
@@ -80,8 +77,10 @@ export class MyCard extends LitElement {
         <h1 class="card-title">${this.title}</h1>
         <img class="card-image" src="${this.image}" alt="${this.title}" />
         <div class="card-text">
-          <p class="card-description">${this.description}</p>
-          <a class="button-link" href="${this.link}" target="_blank">Details</a>
+        <p class="card-description">
+        <slot name ="description">${this.description}</slot>
+      </p>
+        <a class="button-link" href="${this.link}" target="_blank">Details</a>
         </div>
       </div>
     `;
