@@ -9,7 +9,6 @@ export class MyCard extends LitElement {
     return {
       title: { type: String },
       image: { type: String },
-      link: { type: String },
       description: { type: String },
       fancy: { type: Boolean, reflect: true }
     };
@@ -19,7 +18,6 @@ export class MyCard extends LitElement {
     super();
     this.title = "Default Title";
     this.image = "#";
-    this.link = "#";
     this.description = "#";
     this.fancy = "false";
   }
@@ -60,15 +58,22 @@ export class MyCard extends LitElement {
         font-weight: bold;
       }
 
-      a.button-link {
-        display: inline-block;
-        background-color: #c9ebff;
-        border: 2px solid black;
-        color: black;
-        padding: 4px 32px;
-        text-decoration: none;
+      .desc {
+        overflow: auto;
+        height: 100px;
       }
     `;
+  }
+
+  // put this anywhere on the MyCard class; just above render() is probably good
+  openChanged(e) {
+    console.log(e.newState);
+    if (e.newState === "open") {
+      this.fancy = true;
+    }
+    else {
+      this.fancy = false;
+    }
   }
 
   render() {
@@ -78,12 +83,18 @@ export class MyCard extends LitElement {
         <img class="card-image" src="${this.image}" alt="${this.title}" />
         <div class="card-text">
         <p class="card-description">
-        <slot name ="description">${this.description}</slot>
-      </p>
-        <a class="button-link" href="${this.link}" target="_blank">Details</a>
-        </div>
+        <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+          <summary>description</summary>
+          <div>
+          <slot>${this.description}</slot>
+  </div>
+</details>
+        
       </div>
     `;
+  }
+  openChanged(event) {
+  this.fancy = event.target.open;
   }
 }
 
