@@ -27,13 +27,17 @@ export class MyCard extends LitElement {
       :host {
         display: inline-block;
         max-width: 400px;
-        border: 2px solid black;
+        border: 5px solid black;
         background-color: white;
       }
 
       :host([fancy]) {
       background-color: var(--my-card-fancy-bg, #6aff00); 
     }
+
+    .card {
+      height: 500px;
+      } 
 
       .card-image {
         width: 365px;
@@ -48,14 +52,12 @@ export class MyCard extends LitElement {
       }
 
       .card-text {
-        padding: 16px;
+        margin: 24px;
       }
 
       .card-description {
         font-family: Georgia, serif;
-        font-size: 12px;
-        margin-bottom: 32px;
-        font-weight: bold;
+        font-size: 18px;
       }
 
       .desc {
